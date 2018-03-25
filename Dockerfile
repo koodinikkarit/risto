@@ -1,5 +1,5 @@
 FROM golang:1.9.4
-WORKDIR /usr/src
+WORKDIR /go/src/app
 COPY ./authentication ./authentication
 COPY ./config ./config
 COPY ./generators ./generators

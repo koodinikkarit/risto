@@ -1,0 +1,19 @@
+sudo: enabled
+
+os:
+  - linux
+
+install:
+  npm install
+
+script:
+  - export TAG=${TRAVIS_TAG:-latest}
+  - docker build -t $DOCKER_ID_USER/risto .
+  - docker tag $DOCKER_ID_USER/risto $DOCKER_ID_USER/risto:$TAG
+  - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
+  - docker push $DOCKER_ID_USER/risto
+  - chmod +x ./linux/*.sh
+  - ./linux/install_dependencies.sh
+  - ./linux/setup_kubectl.sh
+  - ./linux/install_tiller.sh
+  - ./linux/helm_upgrade.sh
