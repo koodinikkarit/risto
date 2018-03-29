@@ -12,7 +12,7 @@ spec:
     spec:
       containers:
         - name: risto-container
-          image: "{{ .Values.markoImage }}"
+          image: "{{ .Values.ristoImage }}"
           ports:
             - containerPort: 80
           env:
