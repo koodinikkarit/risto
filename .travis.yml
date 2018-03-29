@@ -7,7 +7,7 @@ before_script:
   - chmod +x ./linux/*.sh
 
 script:
-  - docker build -f ./server/Dockerfile -t $DOCKER_ID_USER/risto:$TRAVIS_BRANCH-$TRAVIS_COMMIT ./server
+  - docker build -t $DOCKER_ID_USER/risto:$TRAVIS_BRANCH-$TRAVIS_COMMIT .
   - docker login -u $DOCKER_ID_USER -p $DOCKER_USER_PASSWORD
   - docker push $DOCKER_ID_USER/risto
   - ./linux/install_dependencies.sh
