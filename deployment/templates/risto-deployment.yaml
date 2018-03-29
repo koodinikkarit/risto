@@ -27,4 +27,4 @@ spec:
             - name: MYSQL_DATABASE
               value: {{ .Values.mysqlDatabase }}
             - name: SERVICE_PORT
-              value: 80
+              value: "80"

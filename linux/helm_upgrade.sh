@@ -1,6 +1,6 @@
-IMAGE_TAG="$CI_COMMIT_REF_NAME-$CI_COMMIT_SHA"
+IMAGE_TAG="$TRAVIS_BRANCH-$TRAVIS_COMMIT"
 
-RELEASE_NAME=$(echo "$CI_COMMIT_REF_NAME" | sed 's/\./-/g')
+RELEASE_NAME=$(echo "$TRAVIS_BRANCH" | sed 's/\./-/g')
 
 helm upgrade \
 --wait \

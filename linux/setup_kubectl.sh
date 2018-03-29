@@ -6,5 +6,3 @@ kubectl config set-context context --user=user --cluster=cluster
 kubectl config use-context context
 
 kubectl config set-context context --namespace default
-
-kubectl config view
