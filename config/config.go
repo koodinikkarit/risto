@@ -21,10 +21,6 @@ func ValidateConfig() {
 		log.Fatalln("No environment variable MYSQL_USERNAME")
 	}
 
-	if MysqlPassword == "" {
-		log.Fatalln("No environment variable MYSQL_PASSWORD")
-	}
-
 	if MysqlHost == "" {
 		log.Fatalln("No environment variable MYSQL_HOST")
 	}
