@@ -33,6 +33,8 @@ func (s *RistoServiceServer) HasAdminAccount(
 ) {
 	res := &RistoService.HasAdminAccountResponse{}
 
+	fmt.Println("HasAdminAccount")
+
 	hasAdminAccount, err := usermanager.HasAdminAccount(s.getDB())
 
 	res.HasAdminAccount = hasAdminAccount
