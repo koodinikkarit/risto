@@ -21,6 +21,13 @@ func (s *RistoServiceServer) CreateUser(
 ) {
 	res := &RistoService.CreateUserResponse{}
 
+	newUser := s.userService.CreateUser()
+
+	newUser.ChangeUserName(in.GetUsername())
+	newUser.ChangePassword(in.GetPassword())
+
+	s.userRepository.Save(newUser)
+
 	return res, nil
 }
 

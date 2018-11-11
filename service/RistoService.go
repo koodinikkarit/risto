@@ -11,10 +11,13 @@ import (
 
 	"github.com/jinzhu/gorm"
 	"github.com/koodinikkarit/go-clientlibs/risto"
+	"github.com/koodinikkarit/risto/user"
 )
 
 type RistoServiceServer struct {
-	getDB func() *gorm.DB
+	getDB          func() *gorm.DB
+	userService    *user.UserService
+	userRepository user.UserRepository
 }
 
 func StartRistoService(
@@ -27,8 +30,12 @@ func StartRistoService(
 	}
 
 	s := grpc.NewServer()
+
+	userRepository := user.NewGormUserRepository(getDB)
+
 	RistoService.RegisterRistoServer(s, &RistoServiceServer{
-		getDB: getDB,
+		getDB:          getDB,
+		userRepository: userRepository,
 	})
 
 	reflection.Register(s)
